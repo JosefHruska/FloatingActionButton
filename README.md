@@ -21,6 +21,7 @@ Sample APK can be found in **[Releases](https://github.com/Clans/FloatingActionB
 - Option to set custom animations
 - Option to set custom icon drawable
 - Support for **normal** `56dp` and **mini** `40dp` button sizes
+- Option to use extra **extended** (screen-width) FloatingActionMenu size. !You can change width with via padding!
 - Custom FloatingActionMenu icon animations
 - Option to expand menu up and down
 - Option to show labels to the left and to the right of the menu
@@ -109,6 +110,9 @@ Here are all the **FloatingActionMenu**'s xml attributes with their **default va
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
+        fab:menu_isExtended="false"
+        fab:menu_extendedButtonText="Add new expense"
+        fab:menu_extendedButtonTextColor="Color.WHITE"
         fab:menu_fab_size="normal"
         fab:menu_showShadow="true"
         fab:menu_shadowColor="#66000000"
