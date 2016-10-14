@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.github.clans.fab.FloatingMenu;
 import com.github.fab.sample.R;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class MenusFragment extends Fragment {
 
     private FloatingActionButton fabEdit;
 
-    private List<FloatingActionMenu> menus = new ArrayList<>();
+    private List<FloatingMenu> menus = new ArrayList<>();
     private Handler mUiHandler = new Handler();
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
@@ -151,15 +152,15 @@ public class MenusFragment extends Fragment {
         fab3.setOnClickListener(clickListener);
 
         int delay = 400;
-        for (final FloatingActionMenu menu : menus) {
-            mUiHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    menu.showMenuButton(true);
-                }
-            }, delay);
-            delay += 150;
-        }
+//        for ( FloatingActionMenu menu : menus) {
+//            mUiHandler.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//                    menu.showMenuButton(true);
+//                }
+//            }, delay);
+//            delay += 150;
+//        }
 
         new Handler().postDelayed(new Runnable() {
             @Override

@@ -35,7 +35,7 @@ import java.util.List;
  * @author Josef Hruška (josef@stepuplabs.io)
  */
 
-public class ExtendedFloatingActionMenu extends ViewGroup {
+public class ExtendedFloatingActionMenu extends ViewGroup implements  FloatingMenu{
 
     protected static final int EXTENDED_ACTION_MENU = -1;
     private static final int ANIMATION_DURATION = 300;
@@ -996,6 +996,14 @@ public class ExtendedFloatingActionMenu extends ViewGroup {
     public void setMenuButtonColorPressedResId(int colorResId) {
         mMenuColorPressed = getResources().getColor(colorResId);
         mMenuButton.setColorPressedResId(colorResId);
+    }
+
+    public float getMenuX() {
+        return getX();
+    }
+
+    public float getMenuY() {
+        return getY();
     }
 
     public int getMenuButtonColorPressed() {
