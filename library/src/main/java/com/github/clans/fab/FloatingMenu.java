@@ -11,6 +11,15 @@ import android.widget.ImageView;
  */
 
 public interface FloatingMenu {
+
+    void open(boolean animate);
+
+    void close(boolean animate);
+
+    void setClosedOnTouchOutside(boolean close);
+
+    void setOnMenuToggleListener(ExtendedFloatingActionMenu.OnMenuToggleListener listener);
+
     boolean isOpened();
 
     ImageView getMenuIconView();
