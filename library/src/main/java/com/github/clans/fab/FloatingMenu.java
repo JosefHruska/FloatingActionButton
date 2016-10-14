@@ -17,6 +17,8 @@ public interface FloatingMenu {
 
     AnimatorSet getIconToggleAnimatorSet();
 
+    void setIconToggleAnimatorSet(AnimatorSet animatorSet);
+
     float getMenuX();
 
     float getMenuY();
