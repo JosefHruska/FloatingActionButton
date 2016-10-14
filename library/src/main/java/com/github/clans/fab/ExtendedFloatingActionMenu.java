@@ -1006,8 +1006,6 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements  FloatingMe
         return getPivotY();
     }
 
-
-
     public int getMenuButtonColorPressed() {
         return mMenuColorPressed;
     }

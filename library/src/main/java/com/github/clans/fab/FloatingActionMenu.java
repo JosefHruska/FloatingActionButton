@@ -92,7 +92,7 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
     private boolean mIsSetClosedOnTouchOutside;
     private boolean animationInProgress = false;
     private int mOpenDirection;
-    private OnMenuToggleListener mToggleListener;
+    private ExtendedFloatingActionMenu.OnMenuToggleListener mToggleListener;
     private ValueAnimator mShowBackgroundAnimator;
     private ValueAnimator mHideBackgroundAnimator;
     private int mBackgroundColor;
@@ -769,7 +769,7 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
         mAnimationDelayPerItem = animationDelayPerItem;
     }
 
-    public void setOnMenuToggleListener(OnMenuToggleListener listener) {
+    public void setOnMenuToggleListener(ExtendedFloatingActionMenu.OnMenuToggleListener listener) {
         mToggleListener = listener;
     }
 
@@ -1050,9 +1050,5 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
 
     public void setOnMenuButtonLongClickListener(OnLongClickListener longClickListener) {
         mMenuButton.setOnLongClickListener(longClickListener);
-    }
-
-    public interface OnMenuToggleListener {
-        void onMenuToggle(boolean opened);
     }
 }

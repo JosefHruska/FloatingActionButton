@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Toast;
 
+import com.github.clans.fab.ExtendedFloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingMenu;
@@ -134,7 +135,7 @@ public class MenusFragment extends Fragment {
         menus.add(menuBlue);
         menus.add(menuLabelsRight);
 
-        menuYellow.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+        menuYellow.setOnMenuToggleListener(new ExtendedFloatingActionMenu.OnMenuToggleListener() {
             @Override
             public void onMenuToggle(boolean opened) {
                 String text;

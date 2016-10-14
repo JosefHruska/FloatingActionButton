@@ -1,6 +1,7 @@
 package com.github.clans.fab;
 
 import android.animation.AnimatorSet;
+import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 
@@ -19,6 +20,8 @@ public interface FloatingMenu {
     void setClosedOnTouchOutside(boolean close);
 
     void setOnMenuToggleListener(ExtendedFloatingActionMenu.OnMenuToggleListener listener);
+
+    void setOnMenuButtonClickListener(View.OnClickListener clickListener);
 
     boolean isOpened();
 
