@@ -27,7 +27,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FloatingActionMenu extends ViewGroup {
+public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
 
     private static final int ANIMATION_DURATION = 300;
     private static final float CLOSED_PLUS_ROTATION = 0f;
@@ -590,12 +590,14 @@ public class FloatingActionMenu extends ViewGroup {
         return super.onTouchEvent(event);
     }
 
+    @Override
     public boolean isOpened() {
         return mMenuOpened;
     }
 
     /* ===== API methods ===== */
 
+    @Override
     public void toggle(boolean animate) {
         if (isOpened()) {
             close(animate);
@@ -604,6 +606,7 @@ public class FloatingActionMenu extends ViewGroup {
         }
     }
 
+    @Override
     public void open(final boolean animate) {
         if (!isOpened()) {
             if (isBackgroundEnabled()) {
@@ -660,6 +663,7 @@ public class FloatingActionMenu extends ViewGroup {
         }
     }
 
+    @Override
     public void close(final boolean animate) {
         if (isOpened()) {
             if (isBackgroundEnabled()) {
@@ -720,19 +724,23 @@ public class FloatingActionMenu extends ViewGroup {
      *
      * @param interpolator the Interpolator to be used in animation
      */
+    @Override
     public void setIconAnimationInterpolator(Interpolator interpolator) {
         mOpenAnimatorSet.setInterpolator(interpolator);
         mCloseAnimatorSet.setInterpolator(interpolator);
     }
 
+    @Override
     public void setIconAnimationOpenInterpolator(Interpolator openInterpolator) {
         mOpenAnimatorSet.setInterpolator(openInterpolator);
     }
 
+    @Override
     public void setIconAnimationCloseInterpolator(Interpolator closeInterpolator) {
         mCloseAnimatorSet.setInterpolator(closeInterpolator);
     }
 
+    @Override
     public boolean isAnimated() {
         return mIsAnimated;
     }
@@ -742,6 +750,7 @@ public class FloatingActionMenu extends ViewGroup {
      *
      * @param animated if <b>false</b> - menu items will appear/disappear instantly without any animation
      */
+    @Override
     public void setAnimated(boolean animated) {
         mIsAnimated = animated;
         mOpenAnimatorSet.setDuration(animated ? ANIMATION_DURATION : 0);
@@ -752,48 +761,59 @@ public class FloatingActionMenu extends ViewGroup {
         return mMenuButton;
     }
 
+    @Override
     public int getAnimationDelayPerItem() {
         return mAnimationDelayPerItem;
     }
 
+    @Override
     public void setAnimationDelayPerItem(int animationDelayPerItem) {
         mAnimationDelayPerItem = animationDelayPerItem;
     }
 
+    @Override
     public void setOnMenuToggleListener(OnMenuToggleListener listener) {
         mToggleListener = listener;
     }
 
+    @Override
     public boolean isIconAnimated() {
         return mIconAnimated;
     }
 
+    @Override
     public void setIconAnimated(boolean animated) {
         mIconAnimated = animated;
     }
 
+    @Override
     public ImageView getMenuIconView() {
         return mImageToggle;
     }
 
+    @Override
     public AnimatorSet getIconToggleAnimatorSet() {
         return mIconToggleSet;
     }
 
+    @Override
     public void setIconToggleAnimatorSet(AnimatorSet toggleAnimatorSet) {
         mIconToggleSet = toggleAnimatorSet;
     }
 
+    @Override
     public void setMenuButtonShowAnimation(Animation showAnimation) {
         mMenuButtonShowAnimation = showAnimation;
         mMenuButton.setShowAnimation(showAnimation);
     }
 
+    @Override
     public void setMenuButtonHideAnimation(Animation hideAnimation) {
         mMenuButtonHideAnimation = hideAnimation;
         mMenuButton.setHideAnimation(hideAnimation);
     }
 
+    @Override
     public void setAnimationInProgressListener() {
         setLayoutAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -816,14 +836,17 @@ public class FloatingActionMenu extends ViewGroup {
     /**
      * Returns true if an animation on this layout has not ended yet.
      */
+    @Override
     public boolean isAnimating() {
         return animationInProgress;
     }
 
+    @Override
     public boolean isMenuHidden() {
         return getVisibility() == INVISIBLE;
     }
 
+    @Override
     public boolean isMenuButtonHidden() {
         return mMenuButton.isHidden();
     }
@@ -833,6 +856,7 @@ public class FloatingActionMenu extends ViewGroup {
      *
      * @param animate if true - plays "show animation"
      */
+    @Override
     public void showMenu(boolean animate) {
         setCorrectPivot();
         if (isMenuHidden()) {
@@ -848,6 +872,7 @@ public class FloatingActionMenu extends ViewGroup {
      *
      * @param animate if true - plays "hide animation"
      */
+    @Override
     public void hideMenu(final boolean animate) {
         setCorrectPivot();
         if (!isMenuHidden() && !mIsMenuButtonAnimationRunning) {
@@ -874,6 +899,7 @@ public class FloatingActionMenu extends ViewGroup {
         }
     }
 
+    @Override
     public void toggleMenu(boolean animate) {
         if (isMenuHidden()) {
             showMenu(animate);
@@ -888,6 +914,7 @@ public class FloatingActionMenu extends ViewGroup {
      *
      * @param animate if true - plays "show animation"
      */
+    @Override
     public void showMenuButton(boolean animate) {
         setCorrectPivot();
         if (isMenuButtonHidden()) {
@@ -901,6 +928,7 @@ public class FloatingActionMenu extends ViewGroup {
      *
      * @param animate if true - plays "hide animation"
      */
+    @Override
     public void hideMenuButton(final boolean animate) {
         setCorrectPivot();
         if (!isMenuButtonHidden() && !mIsMenuButtonAnimationRunning) {
@@ -919,6 +947,7 @@ public class FloatingActionMenu extends ViewGroup {
         }
     }
 
+    @Override
     public void toggleMenuButton(boolean animate) {
         if (isMenuButtonHidden()) {
             showMenuButton(animate);
@@ -927,64 +956,77 @@ public class FloatingActionMenu extends ViewGroup {
         }
     }
 
+    @Override
     public void setClosedOnTouchOutside(boolean close) {
         mIsSetClosedOnTouchOutside = close;
     }
 
+    @Override
     public void setMenuButtonColorNormalResId(int colorResId) {
         mMenuColorNormal = getResources().getColor(colorResId);
         mMenuButton.setColorNormalResId(colorResId);
     }
 
+    @Override
     public int getMenuButtonColorNormal() {
         return mMenuColorNormal;
     }
 
+    @Override
     public void setMenuButtonColorNormal(int color) {
         mMenuColorNormal = color;
         mMenuButton.setColorNormal(color);
     }
 
+    @Override
     public void setMenuButtonColorPressedResId(int colorResId) {
         mMenuColorPressed = getResources().getColor(colorResId);
         mMenuButton.setColorPressedResId(colorResId);
     }
 
+    @Override
     public int getMenuButtonColorPressed() {
         return mMenuColorPressed;
     }
 
+    @Override
     public void setMenuButtonColorPressed(int color) {
         mMenuColorPressed = color;
         mMenuButton.setColorPressed(color);
     }
 
+    @Override
     public void setMenuButtonColorRippleResId(int colorResId) {
         mMenuColorRipple = getResources().getColor(colorResId);
         mMenuButton.setColorRippleResId(colorResId);
     }
 
+    @Override
     public int getMenuButtonColorRipple() {
         return mMenuColorRipple;
     }
 
+    @Override
     public void setMenuButtonColorRipple(int color) {
         mMenuColorRipple = color;
         mMenuButton.setColorRipple(color);
     }
 
+    @Override
     public void addMenuButton(FloatingActionButton fab) {
         addView(fab, mButtonsCount - 2);
         mButtonsCount++;
         addLabel(fab);
     }
 
+    @Override
     public void removeMenuButton(FloatingActionButton fab) {
         removeView(fab.getLabelView());
         removeView(fab);
         mButtonsCount--;
     }
 
+    @Override
     public void addMenuButton(FloatingActionButton fab, int index) {
         int size = mButtonsCount - 2;
         if (index < 0) {
@@ -998,6 +1040,7 @@ public class FloatingActionMenu extends ViewGroup {
         addLabel(fab);
     }
 
+    @Override
     public void setCorrectPivot() {
         int pivotX = (Util.getScreenWidth(getContext()) - (getPaddingRight() + (mMenuButton.getCircleSize() / 2)));
         float pivotY = (mImageToggle.getY() + mImageToggle.getHeight() / 2);
@@ -1006,6 +1049,7 @@ public class FloatingActionMenu extends ViewGroup {
         mMenuButton.setPivotX(pivotX);
         mMenuButton.setPivotY(pivotY);
     }
+
 
     public void removeAllMenuButtons() {
         close(true);
@@ -1022,18 +1066,22 @@ public class FloatingActionMenu extends ViewGroup {
         }
     }
 
+    @Override
     public String getMenuButtonLabelText() {
         return mMenuLabelText;
     }
 
+    @Override
     public void setMenuButtonLabelText(String text) {
         mMenuButton.setLabelText(text);
     }
 
+    @Override
     public void setOnMenuButtonClickListener(OnClickListener clickListener) {
         mMenuButton.setOnClickListener(clickListener);
     }
 
+    @Override
     public void setOnMenuButtonLongClickListener(OnLongClickListener longClickListener) {
         mMenuButton.setOnLongClickListener(longClickListener);
     }
