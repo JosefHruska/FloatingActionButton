@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.github.clans.fab.ActionMenu;
 import com.github.clans.fab.ExtendedFloatingActionMenu;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.fab.sample.R;
@@ -54,7 +55,7 @@ public class HomeFragment extends Fragment {
         mFab.setClosedOnTouchOutside(true);
         mFab.setMenuButtonShowAnimation(AnimationUtils.loadAnimation(getContext(), (R.anim.fab_scale_up)));
         mFab.setMenuButtonHideAnimation(AnimationUtils.loadAnimation(getContext(), (R.anim.fab_scale_down)));
-        mFab.setOnMenuButtonClickListener(new FloatingActionMenu.OnClickListener() {
+        mFab.setOnMenuButtonClickListener(new ActionMenu.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -71,7 +72,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        mFabExtended.setOnMenuButtonClickListener(new FloatingActionMenu.OnClickListener() {
+        mFabExtended.setOnMenuButtonClickListener(new ActionMenu.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mFabExtended.isShown()) {

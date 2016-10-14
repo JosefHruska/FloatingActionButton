@@ -35,7 +35,7 @@ import java.util.List;
  * @author Josef Hruška (josef@stepuplabs.io)
  */
 
-public class ExtendedFloatingActionMenu extends ViewGroup {
+public class ExtendedFloatingActionMenu extends ActionMenu {
 
     protected static final int EXTENDED_ACTION_MENU = -1;
     private static final int ANIMATION_DURATION = 300;
@@ -645,7 +645,7 @@ public class ExtendedFloatingActionMenu extends ViewGroup {
         }
         return super.onTouchEvent(event);
     }
-
+    @Override
     public boolean isOpened() {
         return mMenuOpened;
     }
@@ -847,12 +847,12 @@ public class ExtendedFloatingActionMenu extends ViewGroup {
     public void setIconToggleAnimatorSet(AnimatorSet toggleAnimatorSet) {
         mIconToggleSet = toggleAnimatorSet;
     }
-
+    @Override
     public void setMenuButtonShowAnimation(Animation showAnimation) {
         mMenuButtonShowAnimation = showAnimation;
         mMenuButton.setShowAnimation(showAnimation);
     }
-
+    @Override
     public void setMenuButtonHideAnimation(Animation hideAnimation) {
         mMenuButtonHideAnimation = hideAnimation;
         mMenuButton.setHideAnimation(hideAnimation);
@@ -866,6 +866,7 @@ public class ExtendedFloatingActionMenu extends ViewGroup {
         return mMenuButton.isHidden();
     }
 
+    @Override
     public void setCorrectPivot() {
         int buttonLeftPadding = ((Util.getScreenWidth(getContext()) - mMenuButton.calculateMeasuredWidth()) - getPaddingRight()); // We suppose that left padding is equal to right padding.
         int pivotX = Math.round(buttonLeftPadding + mMenuButton.calculateMeasuredWidth() / 2);
@@ -991,6 +992,16 @@ public class ExtendedFloatingActionMenu extends ViewGroup {
     public void setMenuButtonColorNormal(int color) {
         mMenuColorNormal = color;
         mMenuButton.setColorNormal(color);
+    }
+
+    @Override
+    public float getMenuY(){
+        return getY();
+    }
+
+    @Override
+    public float getMenuX(){
+        return getX();
     }
 
     public void setMenuButtonColorPressedResId(int colorResId) {

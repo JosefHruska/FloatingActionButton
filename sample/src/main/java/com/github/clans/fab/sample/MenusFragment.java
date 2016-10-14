@@ -17,6 +17,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Toast;
 
+import com.github.clans.fab.ActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.fab.sample.R;
@@ -39,7 +40,7 @@ public class MenusFragment extends Fragment {
 
     private FloatingActionButton fabEdit;
 
-    private List<FloatingActionMenu> menus = new ArrayList<>();
+    private List<ActionMenu> menus = new ArrayList<>();
     private Handler mUiHandler = new Handler();
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override

@@ -16,7 +16,6 @@ import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.AnticipateInterpolator;
@@ -27,7 +26,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FloatingActionMenu extends ViewGroup {
+public class FloatingActionMenu extends ActionMenu {
 
     private static final int ANIMATION_DURATION = 300;
     private static final float CLOSED_PLUS_ROTATION = 0f;
@@ -40,14 +39,11 @@ public class FloatingActionMenu extends ViewGroup {
 
     private AnimatorSet mOpenAnimatorSet = new AnimatorSet();
     private AnimatorSet mCloseAnimatorSet = new AnimatorSet();
-    private AnimatorSet mIconToggleSet;
     private int mButtonSpacing = Util.dpToPx(getContext(), 0f);
-    private FloatingActionButton mMenuButton;
     private int mMaxButtonWidth;
     private int mLabelsMargin = Util.dpToPx(getContext(), 0f);
     private int mLabelsVerticalOffset = Util.dpToPx(getContext(), 0f);
     private int mButtonsCount;
-    private boolean mMenuOpened;
     private boolean mIsMenuOpening;
     private Handler mUiHandler = new Handler();
     private int mLabelsShowAnimation;
@@ -84,8 +80,6 @@ public class FloatingActionMenu extends ViewGroup {
     private Typeface mCustomTypefaceFromFont;
     private boolean mIconAnimated = true;
     private ImageView mImageToggle;
-    private Animation mMenuButtonShowAnimation;
-    private Animation mMenuButtonHideAnimation;
     private Animation mImageToggleShowAnimation;
     private Animation mImageToggleHideAnimation;
     private boolean mIsMenuButtonAnimationRunning;
@@ -589,7 +583,7 @@ public class FloatingActionMenu extends ViewGroup {
 
         return super.onTouchEvent(event);
     }
-
+    @Override
     public boolean isOpened() {
         return mMenuOpened;
     }
@@ -784,11 +778,13 @@ public class FloatingActionMenu extends ViewGroup {
         mIconToggleSet = toggleAnimatorSet;
     }
 
+    @Override
     public void setMenuButtonShowAnimation(Animation showAnimation) {
         mMenuButtonShowAnimation = showAnimation;
         mMenuButton.setShowAnimation(showAnimation);
     }
 
+    @Override
     public void setMenuButtonHideAnimation(Animation hideAnimation) {
         mMenuButtonHideAnimation = hideAnimation;
         mMenuButton.setHideAnimation(hideAnimation);
@@ -964,6 +960,16 @@ public class FloatingActionMenu extends ViewGroup {
         mMenuButton.setColorRippleResId(colorResId);
     }
 
+    @Override
+    public float getMenuY(){
+        return getY();
+    }
+
+    @Override
+    public float getMenuX(){
+        return getX();
+    }
+
     public int getMenuButtonColorRipple() {
         return mMenuColorRipple;
     }
@@ -997,7 +1003,7 @@ public class FloatingActionMenu extends ViewGroup {
         mButtonsCount++;
         addLabel(fab);
     }
-
+    @Override
     public void setCorrectPivot() {
         int pivotX = (Util.getScreenWidth(getContext()) - (getPaddingRight() + (mMenuButton.getCircleSize() / 2)));
         float pivotY = (mImageToggle.getY() + mImageToggle.getHeight() / 2);
