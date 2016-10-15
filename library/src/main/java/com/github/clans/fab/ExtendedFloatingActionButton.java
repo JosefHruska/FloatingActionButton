@@ -23,7 +23,6 @@ import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.Shape;
 import android.os.Build;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -52,7 +51,7 @@ public class ExtendedFloatingActionButton extends ImageButton {
     int mFabSize;
     boolean mShowShadow;
     int mShadowColor;
-    int mShadowRadius = Util.dpToPx(getContext(), 4f);
+    int mShadowRadius = Util.dpToPx(getContext(), 8f);
     int mShadowXOffset = Util.dpToPx(getContext(), 1f);
     int mShadowYOffset = Util.dpToPx(getContext(), 3f);
     private int mColorNormal;
@@ -514,7 +513,7 @@ public class ExtendedFloatingActionButton extends ImageButton {
     public int getButtonSize() {
         return mFabSize;
     }
-    
+
     public void setColorNormalResId(int colorResId) {
         setColorNormal(getResources().getColor(colorResId));
     }
@@ -948,26 +947,24 @@ public class ExtendedFloatingActionButton extends ImageButton {
             setLayerType(LAYER_TYPE_SOFTWARE, null);
             mPaint.setStyle(Paint.Style.FILL);
             mPaint.setColor(mColorNormal);
-
             mErase.setXfermode(PORTER_DUFF_CLEAR);
-
-            if (!isInEditMode()) {
-                mPaint.setShadowLayer(mShadowRadius, mShadowXOffset, mShadowYOffset, mShadowColor);
-            }
-
+            mPaint.setShadowLayer(mShadowRadius, mShadowXOffset, mShadowYOffset, mShadowColor);
             mRadius = getCircleSize() / 2;
         }
 
         @Override
         public void draw(Canvas canvas) {
             drawRoundRectangleCanvas(canvas, mPaint);
+            drawRoundRectangleCanvas(canvas, mErase);
         }
 
         private void drawRoundRectangleCanvas(Canvas canvas, Paint paint) {
+            float mCanvasXOffset = Util.dpToPx(getContext(), 6f);  // We need shadow to has same width as button.
+            float mCanvasYOffset = Util.dpToPx(getContext(), 18);  // We need shadow to be located little bit lower.
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                canvas.drawRoundRect(new RectF(0, Util.dpToPx(getContext(), 8), Util.getScreenWidth(getContext()) - (getExtendedButtonPadding() + Util.dpToPx(getContext(), 3f)), Util.dpToPx(getContext(), 63f)), 70f, 70f, paint);
+                canvas.drawRoundRect(new RectF(mCanvasXOffset, mCanvasYOffset, Util.getScreenWidth(getContext()) - (getExtendedButtonPadding() + Util.dpToPx(getContext(), 7f)), Util.dpToPx(getContext(), 60f)), 70f, 70f, paint);
             } else {
-                canvas.drawRoundRect(new RectF(0, Util.dpToPx(getContext(), 8), getExtendedButtonLandscapeWidth() - Util.dpToPx(getContext(), 2f), Util.dpToPx(getContext(), 63f)), 70f, 70f, paint);
+                canvas.drawRoundRect(new RectF(mCanvasXOffset, mCanvasYOffset, getExtendedButtonLandscapeWidth() - mCanvasXOffset, Util.dpToPx(getContext(), 60f)), 70f, 70f, paint);
             }
         }
 

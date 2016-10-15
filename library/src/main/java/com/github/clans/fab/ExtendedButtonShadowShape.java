@@ -17,8 +17,8 @@ public class ExtendedButtonShadowShape extends RectShape {
     private Context mContext;
     private float mButtonPadding;
     private float mExtraLeftShadow = -3f;
-    private float mExtraTopShadow = -0f;
-    private float mRadius = 70f;
+    private float mExtraTopShadow = -2f;
+    private float mRadius = 110f;
 
     ExtendedButtonShadowShape(Context ctx) {
         super();

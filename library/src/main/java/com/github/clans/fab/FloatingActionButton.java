@@ -46,8 +46,8 @@ public class FloatingActionButton extends ImageButton {
     boolean mShowShadow;
     int mShadowColor;
     int mShadowRadius = Util.dpToPx(getContext(), 4f);
-    int mShadowXOffset = Util.dpToPx(getContext(), 1f);
-    int mShadowYOffset = Util.dpToPx(getContext(), 3f);
+    int mShadowXOffset = Util.dpToPx(getContext(), 0f);
+    int mShadowYOffset = Util.dpToPx(getContext(), 6f);
     private int mColorNormal;
     private int mColorPressed;
     private int mColorDisabled;
@@ -1148,15 +1148,9 @@ public class FloatingActionButton extends ImageButton {
             setLayerType(LAYER_TYPE_SOFTWARE, null);
             mPaint.setStyle(Paint.Style.FILL);
             mPaint.setColor(mColorNormal);
-
             mErase.setXfermode(PORTER_DUFF_CLEAR);
-
-            if (!isInEditMode()) {
-                mPaint.setShadowLayer(mShadowRadius, mShadowXOffset, mShadowYOffset, mShadowColor);
-            }
-
-            mRadius = getCircleSize() / 2;
-
+            mPaint.setShadowLayer(mShadowRadius, 0, mShadowYOffset,mShadowColor);
+            mRadius = getCircleSize() / 2.2f; // We need shadow to has same width as button.
             if (mProgressBarEnabled && mShowProgressBackground) {
                 mRadius += mProgressWidth;
             }
