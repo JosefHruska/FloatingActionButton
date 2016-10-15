@@ -17,10 +17,10 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Toast;
 
-import com.github.clans.fab.ExtendedFloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingMenu;
+import com.github.clans.fab.FloatingMenuToggleListener;
 import com.github.fab.sample.R;
 
 import java.util.ArrayList;
@@ -135,7 +135,7 @@ public class MenusFragment extends Fragment {
         menus.add(menuBlue);
         menus.add(menuLabelsRight);
 
-        menuYellow.setOnMenuToggleListener(new ExtendedFloatingActionMenu.OnMenuToggleListener() {
+        menuYellow.setOnMenuToggleListener(new FloatingMenuToggleListener() {
             @Override
             public void onMenuToggle(boolean opened) {
                 String text;

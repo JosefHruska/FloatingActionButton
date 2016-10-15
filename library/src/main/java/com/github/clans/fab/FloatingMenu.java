@@ -6,7 +6,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 
 /**
- * WRITE DESCRIPTION PLS
+ * Interface for FloatingActionMenu and ExtendedFloatingActionMenu
  *
  * @author Josef Hruška (josef@stepuplabs.io)
  */
@@ -19,7 +19,7 @@ public interface FloatingMenu {
 
     void setClosedOnTouchOutside(boolean close);
 
-    void setOnMenuToggleListener(ExtendedFloatingActionMenu.OnMenuToggleListener listener);
+    void setOnMenuToggleListener(FloatingMenuToggleListener listener);
 
     void setOnMenuButtonClickListener(View.OnClickListener clickListener);
 
