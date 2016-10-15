@@ -15,10 +15,10 @@ import android.graphics.drawable.shapes.RectShape;
 
 public class ExtendedButtonShadowShape extends RectShape {
     private Context mContext;
-    private float mRadius = 70f;
-    private float mExtraTopShadow = -0f;
-    private float mExtraLeftShadow = -5f;
     private float mButtonPadding;
+    private float mExtraLeftShadow = -3f;
+    private float mExtraTopShadow = -0f;
+    private float mRadius = 70f;
 
     ExtendedButtonShadowShape(Context ctx) {
         super();
@@ -28,6 +28,7 @@ public class ExtendedButtonShadowShape extends RectShape {
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
+
         if (mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             canvas.drawRoundRect(new RectF(Util.dpToPx(mContext, mExtraLeftShadow), Util.dpToPx(mContext, mExtraTopShadow), Util.getScreenWidth(mContext) - mButtonPadding, Util.dpToPx(mContext, 56f)), mRadius, mRadius, paint);
         } else {

@@ -140,7 +140,7 @@ public class Label extends TextView {
     }
 
     public void removeLabelBackground() {
-        setBackgroundCompat(new ColorDrawable(Color.argb(0,0,0,0)));
+        setBackgroundCompat(new ColorDrawable(Color.argb(0, 0, 0, 0)));
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -309,10 +309,6 @@ public class Label extends TextView {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-        if (mFab != null && mFab.isExtended()) {  // Ripple was not handled.
-            return false;
-        }
 
         if (mFab == null || mFab.getOnClickListener() == null || !mFab.isEnabled()) {
             return super.onTouchEvent(event);

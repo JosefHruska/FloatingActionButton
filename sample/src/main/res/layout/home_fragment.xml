@@ -18,27 +18,58 @@
         android:paddingRight="24dp"
         android:src="@drawable/ic_drawing"
         app:menu_backgroundColor="@color/black_a160"
-        app:menu_fab_label="MENU LABEL"
         app:menu_extendedButtonText="Add new expense"
-        app:menu_isExtended="true">
+        app:menu_fab_label="MENU 1"
+        app:menu_labels_margin="20dp">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item"
+            android:id="@+id/menu_normal_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:src="@drawable/ic_star"
-            app:fab_label="Lorem ipsum dolor sit amet"
+            app:fab_label="EXPENSE 1"
             app:fab_size="normal" />
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item2"
+            android:id="@+id/menu_normal_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:src="@drawable/ic_star"
-            app:fab_label="Menu item 1"
+            app:fab_label="TRANSFER 1"
             app:fab_size="normal" />
     </com.github.clans.fab.FloatingActionMenu>
+
+    <com.github.clans.fab.ExtendedFloatingActionMenu
+        android:id="@+id/fabExtended"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom|right"
+        android:paddingBottom="20dp"
+        android:paddingRight="24dp"
+        android:src="@drawable/ic_drawing"
+        app:menu_backgroundColor="@color/black_a160"
+        app:menu_extendedButtonText="Add new expense"
+        app:menu_fab_label="MENU 2">
+
+        <com.github.clans.fab.ExtendedFloatingActionButton
+            android:id="@+id/menu_extended_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/ic_star"
+            app:fab_label="TRANSACTION 2 "
+            app:fab_size="normal" />
+
+        <com.github.clans.fab.ExtendedFloatingActionButton
+            android:id="@+id/menu_extended_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/ic_star"
+            app:fab_label="TRANSFER  2"
+            app:fab_size="normal" />
+    </com.github.clans.fab.ExtendedFloatingActionMenu>
 
 </FrameLayout>

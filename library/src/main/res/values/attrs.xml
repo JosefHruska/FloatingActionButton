@@ -57,6 +57,7 @@
         <attr name="menu_labels_showShadow" format="boolean" />
         <attr name="menu_labels_textNormalColorList" format="color" />
         <attr name="menu_labels_textExtendedColorList" format="color" />
+        <attr name="menu_labels_colorNormal" format="color" />
         <attr name="menu_labels_colorPressed" format="color" />
         <attr name="menu_labels_colorRipple" format="color" />
         <attr name="menu_labels_position" format="enum">
