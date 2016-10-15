@@ -998,10 +998,12 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
         mMenuButton.setColorPressedResId(colorResId);
     }
 
+    @Override
     public float getMenuX() {
         return getPivotX();
     }
 
+    @Override
     public float getMenuY() {
         return getPivotY();
     }

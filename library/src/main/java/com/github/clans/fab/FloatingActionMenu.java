@@ -716,10 +716,12 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
         }
     }
 
+    @Override
     public float getMenuX() {
         return getPivotX();
     }
 
+    @Override
     public float getMenuY() {
         return getPivotY();
     }
