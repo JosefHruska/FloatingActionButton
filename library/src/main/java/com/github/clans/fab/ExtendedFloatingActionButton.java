@@ -959,12 +959,12 @@ public class ExtendedFloatingActionButton extends ImageButton {
         }
 
         private void drawRoundRectangleCanvas(Canvas canvas, Paint paint) {
-            float mCanvasXOffset = Util.dpToPx(getContext(), 6f);  // We need shadow to has same width as button.
-            float mCanvasYOffset = Util.dpToPx(getContext(), 18);  // We need shadow to be located little bit lower.
+            float canvasXOffset = Util.dpToPx(getContext(), 6f);  // We need shadow to has same width as button.
+            float canvasYOffset = Util.dpToPx(getContext(), 18);  // We need shadow to be located little bit lower.
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                canvas.drawRoundRect(new RectF(mCanvasXOffset, mCanvasYOffset, Util.getScreenWidth(getContext()) - (getExtendedButtonPadding() + Util.dpToPx(getContext(), 7f)), Util.dpToPx(getContext(), 60f)), 70f, 70f, paint);
+                canvas.drawRoundRect(new RectF(canvasXOffset, canvasYOffset, Util.getScreenWidth(getContext()) - (getExtendedButtonPadding() + Util.dpToPx(getContext(), 7f)), Util.dpToPx(getContext(), 60f)), 70f, 70f, paint);
             } else {
-                canvas.drawRoundRect(new RectF(mCanvasXOffset, mCanvasYOffset, getExtendedButtonLandscapeWidth() - mCanvasXOffset, Util.dpToPx(getContext(), 60f)), 70f, 70f, paint);
+                canvas.drawRoundRect(new RectF(canvasXOffset, canvasYOffset, getExtendedButtonLandscapeWidth() - canvasXOffset, Util.dpToPx(getContext(), 60f)), 70f, 70f, paint);
             }
         }
 
