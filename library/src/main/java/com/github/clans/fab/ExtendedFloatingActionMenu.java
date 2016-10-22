@@ -1042,7 +1042,7 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
         removeView(fab);
         mButtonsCount--;
     }
-
+    @Override
     public void setExtendedButtonText(String menuText) {
         mMenuText.setText(menuText);
     }
