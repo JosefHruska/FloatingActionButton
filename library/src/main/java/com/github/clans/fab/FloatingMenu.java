@@ -31,6 +31,8 @@ public interface FloatingMenu {
 
     void setIconToggleAnimatorSet(AnimatorSet animatorSet);
 
+    void setExtendedButtonText(String extendedButtonText);
+
     float getMenuX();
 
     float getMenuY();

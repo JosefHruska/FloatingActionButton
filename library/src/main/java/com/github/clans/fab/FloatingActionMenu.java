@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
@@ -958,6 +959,11 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
     public void setMenuButtonColorNormal(int color) {
         mMenuColorNormal = color;
         mMenuButton.setColorNormal(color);
+    }
+
+    @Override
+    public void setExtendedButtonText(String extendedButtonText) {
+        Log.w(FloatingActionMenu.class.getSimpleName(),"You can't set menu text on circle FAB");
     }
 
     public void setMenuButtonColorPressedResId(int colorResId) {
