@@ -18,7 +18,8 @@
         android:paddingRight="24dp"
         android:src="@drawable/ic_drawing"
         app:menu_backgroundColor="@color/black_a160"
-        app:menu_extendedButtonText="Add new expense"
+        app:menu_extendedButtonTextExpanded="IM EXPANDED"
+        app:menu_extendedButtonTextCollapsed="IM COLLAPSED"
         app:menu_fab_label="MENU 1"
         app:menu_labels_margin="20dp">
 
@@ -50,7 +51,8 @@
         android:paddingRight="24dp"
         android:src="@drawable/ic_drawing"
         app:menu_backgroundColor="@color/black_a160"
-        app:menu_extendedButtonText="Add new expense"
+        app:menu_extendedButtonTextExpanded="IM EXPANDED"
+        app:menu_extendedButtonTextCollapsed="IM COLLAPSED"
         app:menu_fab_label="MENU 2">
 
         <com.github.clans.fab.ExtendedFloatingActionButton

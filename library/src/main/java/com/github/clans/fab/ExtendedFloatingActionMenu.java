@@ -29,6 +29,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.label;
+
 /**
  * Menu class for extended version of FloatingActionMenu
  *
@@ -48,7 +50,8 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
     private AnimatorSet mOpenAnimatorSet = new AnimatorSet();
     private AnimatorSet mCloseAnimatorSet = new AnimatorSet();
     private AnimatorSet mIconToggleSet;
-    private String extendedButtonText = null;
+    protected String extendedButtonTextCollapsed = null;
+    protected String extendedButtonTextExpanded = null;
     private int mExtendedButtonTextColor = 0;
     private int mExtendedButtonBackgroundColor;
     private int mExtendedButtonTextSize = 0;
@@ -89,7 +92,7 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
     private Typeface mCustomTypefaceFromFont;
     private boolean mIconAnimated = true;
     private ImageView mImageToggle;
-    private TextView mMenuText;
+    protected TextView mMenuText;
     private Animation mMenuButtonShowAnimation;
     private Animation mMenuButtonHideAnimation;
     private Animation mImageToggleShowAnimation;
@@ -122,7 +125,8 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
 
     private void init(Context context, AttributeSet attrs) {
         TypedArray attr = context.obtainStyledAttributes(attrs, R.styleable.FloatingActionMenu, 0, 0);
-        extendedButtonText = attr.getString(R.styleable.FloatingActionMenu_menu_extendedButtonText);
+        extendedButtonTextExpanded = attr.getString(R.styleable.FloatingActionMenu_menu_extendedButtonTextExpanded);
+        extendedButtonTextCollapsed = attr.getString(R.styleable.FloatingActionMenu_menu_extendedButtonTextCollapsed);
         mExtendedButtonTextColor = attr.getInt(R.styleable.FloatingActionMenu_menu_extendedButtonTextColor, Color.WHITE);
         mExtendedButtonBackgroundColor = attr.getInt(R.styleable.FloatingActionMenu_menu_extendedButtonTextColor, Color.WHITE);
         mExtendedButtonTextSize = attr.getInt(R.styleable.FloatingActionMenu_menu_extendedButtonTextSize, 16);
@@ -256,7 +260,7 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
 
         mMenuText = new TextView(getContext());
         mMenuText.setTypeface(null, Typeface.BOLD);
-        mMenuText.setText(extendedButtonText);
+        mMenuText.setText(extendedButtonTextCollapsed);
         mMenuText.setTextSize(mExtendedButtonTextSize);
         mMenuText.setTextColor(mExtendedButtonTextColor);
 
@@ -705,6 +709,10 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
                 }
             }
 
+            if (!animate) {
+                mMenuText.setText(extendedButtonTextExpanded);
+            }
+
             mUiHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -756,6 +764,9 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
                     }, delay);
                     delay += mAnimationDelayPerItem;
                 }
+            }
+            if (!animate) {
+                mMenuText.setText(extendedButtonTextExpanded);
             }
 
             mUiHandler.postDelayed(new Runnable() {
@@ -1043,8 +1054,13 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
         mButtonsCount--;
     }
     @Override
-    public void setExtendedButtonText(String menuText) {
-        mMenuText.setText(menuText);
+    public void setExtendedButtonTextCollapsed(String menuText) {
+        extendedButtonTextCollapsed = menuText;
+    }
+
+    @Override
+    public void setExtendedButtonTextExpanded(String menuText) {
+        extendedButtonTextExpanded = menuText;
     }
 
     public void setmExtendedButtonTextColor(int menuTextColor) {

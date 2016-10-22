@@ -962,7 +962,12 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
     }
 
     @Override
-    public void setExtendedButtonText(String extendedButtonText) {
+    public void setExtendedButtonTextCollapsed(String extendedButtonText) {
+        Log.w(FloatingActionMenu.class.getSimpleName(),"You can't set menu text on circle FAB");
+    }
+
+    @Override
+    public void setExtendedButtonTextExpanded(String extendedButtonText) {
         Log.w(FloatingActionMenu.class.getSimpleName(),"You can't set menu text on circle FAB");
     }
 

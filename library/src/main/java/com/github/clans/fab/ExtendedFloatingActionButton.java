@@ -34,6 +34,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import static android.R.attr.animation;
 import static com.github.clans.fab.FloatingActionButton.SIZE_NORMAL;
 
 /**
@@ -160,6 +161,26 @@ public class ExtendedFloatingActionButton extends ImageButton {
     private void initShowAnimation(TypedArray attr) {
         int resourceId = attr.getResourceId(R.styleable.FloatingActionButton_fab_showAnimation, R.anim.fab_scale_up);
         mShowAnimation = AnimationUtils.loadAnimation(getContext(), resourceId);
+        mShowAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                ExtendedFloatingActionMenu menu = getActionMenu();
+                CharSequence menuText = menu.mMenuText.getText().toString();
+                if (!menuText.equals(menu.extendedButtonTextExpanded)) {
+                   menu.mMenuText.setText(menu.extendedButtonTextExpanded);
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     private void initHideAnimation(TypedArray attr) {
@@ -169,6 +190,26 @@ public class ExtendedFloatingActionButton extends ImageButton {
 
     private void initHideExtendedAnimation() {
         mHideExtendedAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.fab_extended_hide);
+        mHideExtendedAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                ExtendedFloatingActionMenu menu = getActionMenu();
+                CharSequence menuText = menu.mMenuText.getText().toString();
+                if (!menuText.equals(menu.extendedButtonTextCollapsed)) {
+                    menu.mMenuText.setText(menu.extendedButtonTextCollapsed);
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     private void initReplaceExtendedAnimation() {
@@ -391,10 +432,6 @@ public class ExtendedFloatingActionButton extends ImageButton {
     void playShowAnimation() {
         mHideAnimation.cancel();
         startAnimation(mShowAnimation);
-    }
-
-    void playReplaceExtendedAnimation() {
-        startAnimation(mReplaceExtendedAnimation);
     }
 
     ExtendedFloatingActionMenu getActionMenu() {
