@@ -1044,7 +1044,7 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
     }
 
     public void setExtendedButtonText(String menuText) {
-        extendedButtonText = menuText;
+        mMenuText.setText(menuText);
     }
 
     public void setmExtendedButtonTextColor(int menuTextColor) {
