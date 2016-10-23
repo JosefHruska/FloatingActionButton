@@ -1053,15 +1053,6 @@ public class ExtendedFloatingActionMenu extends ViewGroup implements FloatingMen
         removeView(fab);
         mButtonsCount--;
     }
-    @Override
-    public void setExtendedButtonTextCollapsed(String menuText) {
-        extendedButtonTextCollapsed = menuText;
-    }
-
-    @Override
-    public void setExtendedButtonTextExpanded(String menuText) {
-        extendedButtonTextExpanded = menuText;
-    }
 
     public void setmExtendedButtonTextColor(int menuTextColor) {
         mExtendedButtonTextColor = menuTextColor;

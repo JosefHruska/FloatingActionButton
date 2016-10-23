@@ -961,16 +961,6 @@ public class FloatingActionMenu extends ViewGroup implements FloatingMenu {
         mMenuButton.setColorNormal(color);
     }
 
-    @Override
-    public void setExtendedButtonTextCollapsed(String extendedButtonText) {
-        Log.w(FloatingActionMenu.class.getSimpleName(),"You can't set menu text on circle FAB");
-    }
-
-    @Override
-    public void setExtendedButtonTextExpanded(String extendedButtonText) {
-        Log.w(FloatingActionMenu.class.getSimpleName(),"You can't set menu text on circle FAB");
-    }
-
     public void setMenuButtonColorPressedResId(int colorResId) {
         mMenuColorPressed = getResources().getColor(colorResId);
         mMenuButton.setColorPressedResId(colorResId);
